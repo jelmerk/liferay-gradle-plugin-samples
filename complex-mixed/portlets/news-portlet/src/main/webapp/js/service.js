@@ -1,0 +1,1 @@
+Liferay.Service.register("Liferay.Service.NW", "org.searchworkings.news.service", "news-portlet");

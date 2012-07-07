@@ -1,0 +1,4 @@
+include 'portlets:news-portlet'
+include 'portlets:blog-portlet'
+include 'portlets'
+

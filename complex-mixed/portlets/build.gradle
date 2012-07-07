@@ -1,0 +1,35 @@
+buildscript {
+    repositories {
+		mavenLocal()
+		mavenCentral()
+    }
+    dependencies {
+        classpath group: 'nl.orange11.liferay', name: 'liferay-plugin', version: '0.0.1-SNAPSHOT'
+    }
+}
+
+subprojects {
+	apply plugin: 'idea'
+	apply plugin: 'liferay-portlet'
+	
+	dependencies {
+		providedCompile 'javax.servlet:servlet-api:2.5'
+		providedCompile 'javax.servlet.jsp:jsp-api:2.1'
+		
+		providedCompile files("$liferayHome/lib/ext/portal-service.jar")
+		providedCompile files("$liferayHome/lib/ext/portlet.jar")
+		providedCompile files("$liferayHome/lib/ext/mail.jar")
+		providedCompile files("$liferayHome/lib/ext/activation.jar")
+		providedCompile files("$liferayHome/lib/ext/mysql.jar")
+		providedCompile files("$liferayHome/lib/ext/postgresql.jar")
+		providedCompile files("$liferayHome/lib/ext/hsql.jar")
+		
+		providedCompile files("$liferayHome/webapps/ROOT/WEB-INF/lib/util-java.jar")
+		providedCompile files("$liferayHome/webapps/ROOT/WEB-INF/lib/util-bridges.jar")
+		providedCompile files("$liferayHome/webapps/ROOT/WEB-INF/lib/util-taglib.jar")
+	}
+	
+	liferay {
+		appServerDirName = liferayHome
+	}	
+}

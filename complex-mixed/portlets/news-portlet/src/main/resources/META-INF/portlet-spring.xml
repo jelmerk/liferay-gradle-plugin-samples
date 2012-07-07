@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="org.searchworkings.news.service.NewsLocalService" class="org.searchworkings.news.service.impl.NewsLocalServiceImpl" />
+	<bean id="org.searchworkings.news.service.NewsLocalServiceUtil" class="org.searchworkings.news.service.NewsLocalServiceUtil">
+		<property name="service" ref="org.searchworkings.news.service.NewsLocalService" />
+	</bean>
+	<bean id="org.searchworkings.news.service.NewsService" class="org.searchworkings.news.service.impl.NewsServiceImpl" />
+	<bean id="org.searchworkings.news.service.NewsServiceUtil" class="org.searchworkings.news.service.NewsServiceUtil">
+		<property name="service" ref="org.searchworkings.news.service.NewsService" />
+	</bean>
+	<bean id="org.searchworkings.news.service.persistence.NewsPersistence" class="org.searchworkings.news.service.persistence.NewsPersistenceImpl" parent="basePersistence" />
+</beans>

@@ -1,0 +1,19 @@
+apply plugin: 'idea'
+
+ext {
+   liferayHome = file('/Users/jkuperus/Development/Projects/liferay_6_1_ga1/build/portal/apache-tomcat/')
+   jalopyFile  = file('misc/jalopy.xml')
+}	
+
+allprojects {
+    defaultTasks 'clean', 'deploy'
+    
+    repositories {
+        mavenCentral()
+        mavenLocal()    
+    }
+}	
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0'
+}

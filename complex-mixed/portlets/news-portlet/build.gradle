@@ -1,0 +1,12 @@
+apply plugin: 'liferay-servicebuilder'
+
+dependencies {
+	compile sourceSets.service.output
+    serviceCompile files("$liferayHome/lib/ext/portal-service.jar")
+}
+
+servicebuilder {
+	jalopyInputFileName = jalopyFile
+}
+
+
