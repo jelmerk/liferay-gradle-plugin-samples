@@ -9,30 +9,47 @@ buildscript {
 }
 
 subprojects {
-	apply plugin: 'idea'
-	apply plugin: 'eclipse'
-	apply plugin: 'liferay-portlet'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    apply plugin: 'liferay-portlet'
+    apply plugin: 'liferay-servicebuilder'
 
-	liferay {
-		appServerDirName = liferayHome
-	}
-		
-	dependencies {
-		providedCompile 'javax.servlet:servlet-api:2.5'
-		providedCompile 'javax.servlet.jsp:jsp-api:2.1'
-		
-		providedCompile files("$liferay.appServerDir/lib/ext/portal-service.jar")
-		providedCompile files("$liferay.appServerDir/lib/ext/portlet.jar")
-		providedCompile files("$liferay.appServerDir/lib/ext/mail.jar")
-		providedCompile files("$liferay.appServerDir/lib/ext/activation.jar")
-		providedCompile files("$liferay.appServerDir/lib/ext/mysql.jar")
-		providedCompile files("$liferay.appServerDir/lib/ext/postgresql.jar")
-		providedCompile files("$liferay.appServerDir/lib/ext/hsql.jar")
-		
-		providedCompile files("$liferay.appServerDir/webapps/ROOT/WEB-INF/lib/util-java.jar")
-		providedCompile files("$liferay.appServerDir/webapps/ROOT/WEB-INF/lib/util-bridges.jar")
-		providedCompile files("$liferay.appServerDir/webapps/ROOT/WEB-INF/lib/util-taglib.jar")
-	}
+    liferay {
+        appServerDirName = liferayHome
+    }
 	
+    servicebuilder {
+        jalopyInputFileName = jalopyFile
+    }
 	
+    // unlike the eclipse plugin the intellij plugin does not seem to add all source dirs
+	
+    idea {
+        module {
+            sourceDirs += sourceSets.service.allJava.srcDirs
+        }
+    }	
+	
+    dependencies {
+        compile sourceSets.service.output
+	
+        providedCompile 'javax.servlet:servlet-api:2.5'
+        providedCompile 'javax.servlet.jsp:jsp-api:2.1'
+		
+        providedCompile files("$liferay.appServerDir/lib/ext/portal-service.jar")
+        providedCompile files("$liferay.appServerDir/lib/ext/portlet.jar")
+        providedCompile files("$liferay.appServerDir/lib/ext/mail.jar")
+        providedCompile files("$liferay.appServerDir/lib/ext/activation.jar")
+        providedCompile files("$liferay.appServerDir/lib/ext/mysql.jar")
+        providedCompile files("$liferay.appServerDir/lib/ext/postgresql.jar")
+        providedCompile files("$liferay.appServerDir/lib/ext/hsql.jar")
+        
+        providedCompile files("$liferay.appServerDir/webapps/ROOT/WEB-INF/lib/util-java.jar")
+        providedCompile files("$liferay.appServerDir/webapps/ROOT/WEB-INF/lib/util-bridges.jar")
+        providedCompile files("$liferay.appServerDir/webapps/ROOT/WEB-INF/lib/util-taglib.jar")
+		
+        // servicebuilder dependencies
+		
+        serviceCompile files("$liferay.appServerDir/lib/ext/portal-service.jar")		
+    }
 }
