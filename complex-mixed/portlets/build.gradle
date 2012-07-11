@@ -4,7 +4,7 @@ buildscript {
 		mavenCentral()
     }
     dependencies {
-        classpath group: 'nl.orange11.liferay', name: 'liferay-plugin', version: '0.0.1-SNAPSHOT'
+        classpath group: 'com.github.jelmerk', name: 'liferay-plugin', version: '0.0.1-SNAPSHOT'
     }
 }
 
