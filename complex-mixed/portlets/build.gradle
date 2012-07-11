@@ -10,26 +10,29 @@ buildscript {
 
 subprojects {
 	apply plugin: 'idea'
+	apply plugin: 'eclipse'
 	apply plugin: 'liferay-portlet'
-	
+
+	liferay {
+		appServerDirName = liferayHome
+	}
+		
 	dependencies {
 		providedCompile 'javax.servlet:servlet-api:2.5'
 		providedCompile 'javax.servlet.jsp:jsp-api:2.1'
 		
-		providedCompile files("$liferayHome/lib/ext/portal-service.jar")
-		providedCompile files("$liferayHome/lib/ext/portlet.jar")
-		providedCompile files("$liferayHome/lib/ext/mail.jar")
-		providedCompile files("$liferayHome/lib/ext/activation.jar")
-		providedCompile files("$liferayHome/lib/ext/mysql.jar")
-		providedCompile files("$liferayHome/lib/ext/postgresql.jar")
-		providedCompile files("$liferayHome/lib/ext/hsql.jar")
+		providedCompile files("$liferay.appServerDir/lib/ext/portal-service.jar")
+		providedCompile files("$liferay.appServerDir/lib/ext/portlet.jar")
+		providedCompile files("$liferay.appServerDir/lib/ext/mail.jar")
+		providedCompile files("$liferay.appServerDir/lib/ext/activation.jar")
+		providedCompile files("$liferay.appServerDir/lib/ext/mysql.jar")
+		providedCompile files("$liferay.appServerDir/lib/ext/postgresql.jar")
+		providedCompile files("$liferay.appServerDir/lib/ext/hsql.jar")
 		
-		providedCompile files("$liferayHome/webapps/ROOT/WEB-INF/lib/util-java.jar")
-		providedCompile files("$liferayHome/webapps/ROOT/WEB-INF/lib/util-bridges.jar")
-		providedCompile files("$liferayHome/webapps/ROOT/WEB-INF/lib/util-taglib.jar")
+		providedCompile files("$liferay.appServerDir/webapps/ROOT/WEB-INF/lib/util-java.jar")
+		providedCompile files("$liferay.appServerDir/webapps/ROOT/WEB-INF/lib/util-bridges.jar")
+		providedCompile files("$liferay.appServerDir/webapps/ROOT/WEB-INF/lib/util-taglib.jar")
 	}
 	
-	liferay {
-		appServerDirName = liferayHome
-	}	
+	
 }
