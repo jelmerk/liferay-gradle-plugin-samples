@@ -1,7 +1,9 @@
-files("portlets", "themes").each { parentDir ->
-	parentDir.eachFile { 
-		if (it.directory && new File(it, "build.gradle").exists()) {
-			include "$parentDir.name:$it.name"
-		}
-	}	
+files("ext", "portlets", "themes", "hooks", "webs").each { parentDir ->
+	if (parentDir.exists()) {
+		parentDir.eachFile { 
+			if (it.directory && new File(it, "build.gradle").exists()) {
+				include "$parentDir.name:$it.name"
+			}
+		}	
+	}
 }

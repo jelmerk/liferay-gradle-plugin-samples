@@ -36,20 +36,16 @@ subprojects {
         providedCompile 'javax.servlet:servlet-api:2.5'
         providedCompile 'javax.servlet.jsp:jsp-api:2.1'
 		
-        providedCompile files("$liferay.appServerDir/lib/ext/portal-service.jar")
-        providedCompile files("$liferay.appServerDir/lib/ext/portlet.jar")
-        providedCompile files("$liferay.appServerDir/lib/ext/mail.jar")
-        providedCompile files("$liferay.appServerDir/lib/ext/activation.jar")
-        providedCompile files("$liferay.appServerDir/lib/ext/mysql.jar")
-        providedCompile files("$liferay.appServerDir/lib/ext/postgresql.jar")
-        providedCompile files("$liferay.appServerDir/lib/ext/hsql.jar")
+		providedCompile fileTree(dir :"$liferay.appServerGlobalLibDir", include: "*.jar")
         
-        providedCompile files("$liferay.appServerDir/webapps/ROOT/WEB-INF/lib/util-java.jar")
-        providedCompile files("$liferay.appServerDir/webapps/ROOT/WEB-INF/lib/util-bridges.jar")
-        providedCompile files("$liferay.appServerDir/webapps/ROOT/WEB-INF/lib/util-taglib.jar")
+        providedCompile files(
+        	"$liferay.appServerPortalDir/WEB-INF/lib/util-java.jar",
+			"$liferay.appServerPortalDir/WEB-INF/lib/util-bridges.jar",
+	  	    "$liferay.appServerPortalDir/WEB-INF/lib/util-taglib.jar"
+	  	)
 		
         // servicebuilder dependencies
 		
-        serviceCompile files("$liferay.appServerDir/lib/ext/portal-service.jar")		
+        serviceCompile files("$liferay.appServerGlobalLibDir/portal-service.jar")		
     }
 }
