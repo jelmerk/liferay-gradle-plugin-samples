@@ -4,4 +4,3 @@ include 'portlets'
 
 include 'themes:my-theme'
 include 'themes'
-
