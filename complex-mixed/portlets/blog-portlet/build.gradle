@@ -2,3 +2,6 @@ dependencies {
     compile project(path: ':portlets:news-portlet',  configuration: 'service')
 }
 
+task testje(type: com.github.jelmerk.SassToCss) {
+	sassDir = file("src")
+}

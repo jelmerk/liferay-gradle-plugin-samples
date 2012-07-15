@@ -1,7 +1,10 @@
+/**
+ * Make sure you add a property called liferayHome to your ~/.gradle/gradle.properties file that points to the liferay tomcat folder
+ */
 apply plugin: 'idea'
 
 ext {
-   liferayHome = file('/Users/jkuperus/Development/Projects/liferay_6_1_ga1/build/portal/apache-tomcat/')
+ //  liferayHome = file('/Users/jkuperus/Development/Projects/liferay_6_1_ga1/build/portal/apache-tomcat/')
    jalopyFile  = file('misc/jalopy.xml')
 }	
 
