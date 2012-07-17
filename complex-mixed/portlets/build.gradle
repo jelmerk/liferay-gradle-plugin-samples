@@ -21,6 +21,10 @@ subprojects {
     servicebuilder {
         jalopyInputFileName = jalopyFile
     }
+        
+    [javadoc, javadocService].each { task ->
+	    task.options.tags = ['generated:a:"ServiceBuilder generated this class. Modifications in this class will be overwritten the next time it is generated"']
+    }
 	
     // unlike the eclipse plugin the intellij plugin does not seem to add all source dirs
 	
