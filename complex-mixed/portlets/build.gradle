@@ -39,14 +39,14 @@ subprojects {
 	
         providedCompile 'javax.servlet:servlet-api:2.5'
         providedCompile 'javax.servlet.jsp:jsp-api:2.1'
-		
-		providedCompile fileTree(dir :"$liferay.appServerGlobalLibDir", include: "*.jar")
+
+        providedCompile fileTree(dir :"$liferay.appServerGlobalLibDir", include: "*.jar")
         
         providedCompile files(
-        	"$liferay.appServerPortalDir/WEB-INF/lib/util-java.jar",
-			"$liferay.appServerPortalDir/WEB-INF/lib/util-bridges.jar",
-	  	    "$liferay.appServerPortalDir/WEB-INF/lib/util-taglib.jar"
-	  	)
+            "$liferay.appServerPortalDir/WEB-INF/lib/util-java.jar",
+            "$liferay.appServerPortalDir/WEB-INF/lib/util-bridges.jar",
+            "$liferay.appServerPortalDir/WEB-INF/lib/util-taglib.jar"
+        )
 		
         // servicebuilder dependencies
 		
